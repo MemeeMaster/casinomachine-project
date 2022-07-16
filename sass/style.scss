@@ -1,0 +1,215 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    height: 100vh;
+    background: radial-gradient(circle, #af8231 0%, #42341b 100%);
+    font-family: 'Vollkorn SC', serif;
+}
+
+.title {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-shadow: 2px 2px 3px #000;
+    color: #fff;
+
+    h1 {
+        font-size: 3rem;
+        text-transform: uppercase;
+    }
+
+    p {
+        font-size: 2.5rem;
+    }
+}
+
+.machine {
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__body {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+        height: 50%;
+        border-radius: 25px;
+        border-left: 6px solid #970000;
+        border-bottom: 4px solid #970000;
+        background-image: linear-gradient(315deg, #2f4353 0%, #9e9890 74%);
+        box-shadow: 1px 1px 300px #fff;
+
+        &-window {
+            position: relative;
+            height: 80%;
+            width: 23%;
+            border-radius: 20px;
+            box-shadow: 3px 3px 3px #333333;
+            background-color: #242424;
+            perspective: 800px;
+
+            img {
+                object-fit: cover;
+            }
+
+            &-back {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #c2c2c2;
+
+                .logo {
+                    font-size: 400%;
+                    font-weight: bold;
+                    color: #af8231;
+                    text-shadow: 2px 2px 3px #970000;
+                }
+            }
+
+            .slot-windows {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 20px;
+            }
+        }
+
+        &-start {
+            position: relative;
+            width: 4em;
+            height: 4em;
+            font-size: 2rem;
+            color: #fff;
+            background-color: #970000;
+            border: 3px solid #fff;
+            box-shadow: 3px 3px 10px #000;
+            font-weight: bold;
+            font-family: 'Vollkorn SC', serif;
+            text-transform: uppercase;
+            border-radius: 50%;
+            cursor: pointer;
+            overflow: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: -30px;
+                left: -130px;
+                height: 125%;
+                width: 100px;
+                background-image: linear-gradient(-90deg, #ffffff4d, #ffffff00);
+                transform: rotate(20deg);
+                transition: left .3s;
+            }
+
+            &:hover::before {
+                left: 130%;
+            }
+        }
+    }
+}
+
+.result {
+    text-align: center;
+    font-size: 200%;
+}
+
+.wrapper {
+    max-width: 1300px;
+    max-height: 450px;
+}
+
+.add-z-index {
+    z-index: 5;
+}
+
+.spin-animation {
+    animation: .2s spin 10 forwards;
+}
+
+.reversed-spin-animation {
+    animation: .2s spinReverse 10 forwards;
+}
+
+@media only screen and (min-width: 576px) {
+    .title {
+        h1 {
+            font-size: 5rem;
+        }
+
+        p {
+            font-size: 3rem;
+        }
+    }
+
+    .machine {
+        &__body {
+            height: 60%;
+
+            &-start {
+                width: 5em;
+                height: 5em;
+                font-size: 3rem;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .machine {
+        &__body {
+            height: 100%;
+        }
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateX(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: rotateX(180deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotateX(360deg);
+        opacity: 1;
+    }
+}
+
+@keyframes spinReverse {
+    0% {
+        transform: rotateX(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: rotateX(180deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotateX(360deg);
+        opacity: 0;
+    }
+}
